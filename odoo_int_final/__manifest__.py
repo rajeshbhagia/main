@@ -1,0 +1,33 @@
+
+{
+    "name": "Odoo CereTax Integration",
+    "version": "18.0.1.0.0",
+    "summary": "CereTax indirect tax automation solution",
+    "description": "CereTax tax automation solution helps global trnsaction tax calculation and address validation.  It caters the product taxability, customer exemptions and latest updated tax rates, tax rules and business logic.",
+    "category": "Accounting",
+    "author": "LnS Infusion",
+    "license": "AGPL-3",
+    "depends": ["base", "sale_management", "account"],
+    "data": [
+        "security/odoo_int_security.xml",
+        "security/ir.model.access.csv",
+        "views/tax_line_views.xml",
+        "views/sale_order_form_inherit.xml",
+        "views/res_config_settings_views.xml",
+        "views/sale_views.xml",
+        "views/sale_order_ceretax_address_views.xml",
+        "views/res_partner_ceretax_views.xml",
+        "views/account_move_views.xml",
+        "views/account_move_tax_line_views.xml",
+        "views/transactionsmenu.xml",
+        'views/ps_code_views.xml',
+        'views/product_views.xml',
+        'views/fetch_ps_code_wizard_view.xml',
+        'views/menu_and_actions.xml',
+    ],
+    "demo": [],
+    "images": ["static/description/icon.png"],
+    "installable": True,
+    "application": False,
+    "auto_install": False
+}

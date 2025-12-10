@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sale_order_ceretax_address_button" model="ir.ui.view">
+        <field name="name">sale.order.ceretax.address.validation</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Add button into SO header -->
+            <xpath expr="//header" position="inside">
+                <button name="action_ceretax_validate_so_address"
+                        type="object"
+                        string="Validate Address"
+                        class="btn-secondary"/>
+            </xpath>
+
+            <!-- Add debug/output field -->
+            <xpath expr="//sheet" position="after">
+                <group string="CereTax Address Validation">
+                    <field name="ceretax_last_address_validation" readonly="1"/>
+            <span class="o_form_label" style="font-weight:bold; font-size:16px; color:#333;">
+                Integration partner LnS Infusion
+            </span>
+
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

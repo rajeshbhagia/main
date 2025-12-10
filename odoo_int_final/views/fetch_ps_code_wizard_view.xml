@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fetch_ps_code_wizard_form" model="ir.ui.view">
+        <field name="name">ceretax.fetch.pscode.wizard.form</field>
+        <field name="model">ceretax.fetch.pscode.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Fetch PS Codes">
+                <sheet>
+                    <group>
+                        <field name="info" readonly="1"/>
+                        <div class="oe_clear" style="padding:10px; margin-top:10px;">
+                    <span class="o_form_label">
+                        <strong>Integration partner LnS Infusion</strong>
+                    </span>
+                </div>
+                    </group>
+                </sheet>
+
+                <footer>
+                    <button name="action_fetch"
+                            type="object"
+                            string="Fetch Now"
+                            class="btn-primary"/>
+
+                    <button string="Close"
+                            special="cancel"
+                            class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

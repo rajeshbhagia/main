@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_line_tax_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.line.tax.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Add Ceretax Line Tax BEFORE subtotal -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='price_subtotal']" position="before">
+                <field name="ceretax_line_tax" string="Tax"/>
+            </xpath>
+
+             <xpath expr="//field[@name='order_line']//list//field[@name='tax_id']" position="replace"/>
+
+
+            <!-- Add Tax Details button inside order_line tree -->
+            <xpath expr="//field[@name='order_line']/list" position="inside">
+                <button
+                    name="%(action_open_tax_lines)d"
+                    type="action"
+                    icon="fa-list"
+                    string="Tax Details"
+                    context="{'default_sale_line_id': id}"
+                    domain="[('sale_line_id', '=', id)]"
+                />
+
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
