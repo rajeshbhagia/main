@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_config_settings_ceretax,res.config.settings.ceretax,base.model_res_config_settings,base.group_system,1,1,1,1
+access_sale_order_line_tax_user,sale.order.line.tax user,model_sale_order_line_tax,base.group_user,1,1,1,0
+access_ceretax_transaction_user,ceretax.transaction user,model_ceretax_transaction,base.group_user,1,1,1,0
+access_account_move_line_tax_user,account.move.line.tax user,model_account_move_line_tax,base.group_user,1,1,1,0
+access_ceretax_ps_code,access_ceretax_ps_code,model_ceretax_ps_code,base.group_user,1,1,1,1
+access_ceretax_fetch_wizard,access_ceretax_fetch_wizard,model_ceretax_fetch_pscode_wizard,base.group_user,1,1,1,1
+access_ceretax_ps_code_user,access.ceretax.ps.code,model_ceretax_ps_code,base.group_user,1,1,1,1

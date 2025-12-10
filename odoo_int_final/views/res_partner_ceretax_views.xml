@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_ceretax" model="ir.ui.view">
+        <field name="name">res.partner.form.ceretax.address.validation</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+           
+            <!-- Add CereTax button to the button box -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+               <button name="action_ceretax_validate_address"
+                string="Validate Address"
+                  icon="fa-check-circle"
+                    type="object"
+                    class="btn-primary"/>
+            </xpath>
+
+            <!-- Add a CereTax tab in notebook -->
+            <xpath expr="//notebook" position="inside">
+                <page string="CereTax">
+                    <group>
+                        <field name="ceretax_last_validation" readonly="1" widget="json"/>
+                        <!-- Place the Update Address button here -->
+                       <button name="action_apply_validated_address"
+                        type="object"
+                        string="Update Address"
+                        invisible="ceretax_address_needs_update == False"/>
+                      <span class="o_form_label" style="font-weight:bold; font-size:16px; color:#333;">
+                Integration partner LnS Infusion
+            </span>
+                         
+                    </group>
+                </page>
+            </xpath>
+
+            <!-- <xpath expr="//group[@name='street']" position="after"> -->
+            <xpath expr="//field[@name='zip']" position="after">
+
+                <group string="Location Details">
+                    <field name="latitude"/>
+                    <field name="longitude"/>
+                    <field name="pluscode"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Action to open sale.order.line.tax (Tax Lines for sale lines) -->
+    <record id="action_open_sale_line_tax" model="ir.actions.act_window">
+        <field name="name">Sale Line Tax Lines</field>
+        <field name="res_model">sale.order.line.tax</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+    </record>
+
+   
+
+    <!-- ========== Sale Order form inherit: add button and Tax Details -->
+    <record id="view_sale_order_form_inherit_ceretax" model="ir.ui.view">
+        <field name="name">sale.order.form.ceretax.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_ceretax_calculate" string="Calc Tax" type="object" class="oe_highlight"/>
+            </xpath>
+
+            <!-- Add Tax Details button in order line tree/list (sale) -->
+            <xpath expr="//field[@name='order_line']//list//field[@name='product_uom_qty']" position="after">
+                <button
+                    name="%(action_open_sale_line_tax)d"
+                    type="action"
+                    string="Tax Details"
+                    icon="fa-list"
+                    context="{'default_sale_line_id': id}"
+                    domain="[('sale_line_id','=', id)]"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ========== Account Move / Invoice form inherit: add button and Tax Details -->
+    <record id="view_move_form_inherit_ceretax" model="ir.ui.view">
+        <field name="name">account.move.form.ceretax.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_ceretax_calculate" string="CereTax Tax" type="object" class="oe_highlight"/>
+            </xpath>
+
+            <!-- Add Tax Details button in invoice line list/list -->
+            <xpath expr="//field[@name='invoice_line_ids']//list//field[@name='quantity']" position="after">
+                <button
+                    name="%(action_open_move_line_tax)d"
+                    type="action"
+                    string="Tax Details"
+                    icon="fa-list"
+                    context="{'default_move_line_id': id}"
+                    domain="[('move_line_id','=', id)]"
+                />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

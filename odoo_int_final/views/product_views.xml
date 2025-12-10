@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Add PS Code field to product.template form -->
+  <record id="view_product_template_inherit_ceretax" model="ir.ui.view">
+    <field name="name">product.template.form.ceretax</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_only_form_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet" position="inside">
+        <group>
+          <field name="ceretax_ps_code_id" widget="many2one" options="{'no_create': False}"/>
+        </group>
+      </xpath>
+    </field>
+  </record>
+
+  <!-- Add PS Code field to product.product form (if applicable) -->
+  <!-- <record id="view_product_product_inherit_ceretax" model="ir.ui.view">
+    <field name="name">product.product.form.ceretax</field>
+    <field name="model">product.product</field>
+    <field name="inherit_id" ref="product.product_common_form_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet" position="inside">
+        <group>
+          <field name="ceretax_ps_code_id" widget="many2one" options="{'no_create': False}"/>
+        </group>
+      </xpath>
+    </field>
+  </record> -->
+
+  <!-- Add PS Code field to product.category form -->
+  <record id="view_product_category_inherit_ceretax" model="ir.ui.view">
+    <field name="name">product.category.form.ceretax</field>
+    <field name="model">product.category</field>
+    <field name="inherit_id" ref="product.product_category_form_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet" position="inside">
+        <group>
+          <field name="ceretax_ps_code_id" widget="many2one" options="{'no_create': False}"/>
+        </group>
+      </xpath>
+    </field>
+  </record>
+</odoo>

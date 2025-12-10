@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- List View -->
+  <record id="view_ceretax_ps_code_list" model="ir.ui.view">
+    <field name="name">ceretax.ps.code.list</field>
+    <field name="model">ceretax.ps.code</field>
+    <field name="arch" type="xml">
+      <list string="PS Codes (Integration partner LnS Infusion)">
+        <field name="ps_code"/>
+        <field name="description"/>
+        <field name="active"/>
+      </list>
+    </field>
+  </record>
+
+  <!-- Form View -->
+  <record id="view_ceretax_ps_code_form" model="ir.ui.view">
+    <field name="name">ceretax.ps.code.form</field>
+    <field name="model">ceretax.ps.code</field>
+    <field name="arch" type="xml">
+      <form string="PS Code">
+       <header>
+  <span class="o_form_label" style="font-weight:bold; font-size:16px; color:#333;">
+    Integration partner LnS Infusion
+  </span>
+</header>
+
+        <sheet>
+          <group>
+            <field name="ps_code"/>
+            <field name="description"/>
+            <field name="active"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- Action -->
+  <record id="action_ceretax_ps_codes" model="ir.actions.act_window">
+    <field name="name">PS Codes </field>
+    <field name="res_model">ceretax.ps.code</field>
+    <field name="view_mode">list,form</field>
+    <field name="help" type="html">
+      <p style="padding:10px; font-weight:bold; font-size:16px; color:#333;">
+        Integration partner LnS Infusion
+      </p>
+      <p class="o_view_nocontent_smiling_face">
+        Manage CereTax PS Codes here. Use Utilities -> Fetch PS Codes to refresh from API.
+      </p>
+    </field>
+  </record>
+</odoo>

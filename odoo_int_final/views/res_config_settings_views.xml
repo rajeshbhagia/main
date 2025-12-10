@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Action -->
+  <record id="action_ceretax_settings" model="ir.actions.act_window">
+    <field name="name">CereTax Integration</field>
+    <field name="res_model">res.config.settings</field>
+    <field name="view_mode">form</field>
+    <field name="target">current</field>
+  </record>
+
+  <!-- Menu under Settings -->
+  <menuitem id="menu_ceretax_settings"
+            name="CereTax"
+            parent="base.menu_config"
+            action="action_ceretax_settings"
+            sequence="100"/>
+
+     <menuitem id="menu_custom_settings_action"
+              name="Configure CereTax"
+              parent="menu_ceretax_settings"
+              action="action_ceretax_settings"
+              sequence="10"/>
+
+ 
+  <record id="view_res_config_settings_inherit_ceretax" model="ir.ui.view">
+    <field name="name">res.config.settings.ceretax</field>
+    <field name="model">res.config.settings</field>
+    <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+    <field name="arch" type="xml">
+
+      <!-- Insert before Performance block -->
+      <xpath expr="//block[@name='performance']" position="before">
+        <block title="CereTax Integration" name="ceretax_settings">
+
+          <setting id="ceretax_api_key" help="Enter the API key provided by CereTax.">
+            <field name="api_key"  password="True"/>
+          </setting>
+
+          <setting id="ceretax_environment" help="Choose the environment (Sandbox or Production).">
+            <field name="environment"/>
+          </setting>
+          <setting id="ceretax_test_connection_setting">
+                        <button name="action_test_connection"
+                                type="object"
+                                string="Test Connection"
+                                icon="oi-arrow-right"
+                                class="btn-link o_web_settings_access_rights"/>
+                    </setting>
+
+          <setting id="ceretax_profile" help="Select the profile (Sales or Purchase).">
+            <field name="profile"/>
+          </setting>
+
+          <setting id="ceretax_enable" help="Enable or disable CereTax integration.">
+            <field name="enable_ceretax"/>
+          </setting>
+
+          <setting id="ceretax_post_finalized" help="Post finalized transactions to CereTax.">
+            <field name="post_finalized"/>
+          </setting>
+
+          <setting id="ceretax_logging" help="Enable logging for debugging integration issues.">
+            <field name="enable_logging"/>
+          </setting>
+
+          <setting id="ceretax_addressvalidation" help="Enable or disable CereTax Address Validation.">
+            <field name="enable_addressvalidation"/>
+          </setting>
+
+          <setting id="ceretax_validate_address" help="Validate customer addresses during transactions.">
+            <field name="validate_customer_address"/>
+          </setting>
+
+          <setting id="ceretax_validate_transaction" help="Validate every transaction with CereTax.">
+            <field name="validate_every_transaction"/>
+          </setting>
+
+          <setting id="ceretax_unit_type" help="Select the unit type.">
+            <field name="unit_type"/>
+            <div class="o_setting_right">
+                    <!-- <label for="unit_type"/> -->
+                        <!-- <div class="text-muted">Default unit type for tax calculation.</div> -->
+                    </div>
+          </setting>
+
+          <setting id="ceretax_business_type" help="Select the business type.">
+            <field name="business_type"/>
+            <div class="o_setting_right">
+                    <!-- <label for="business_type"/> -->
+                        <!-- <div class="text-muted">Default business type for tax calculation.</div> -->
+                    </div>
+          </setting>
+
+          <setting id="ceretax_customer_type" help="Default customer type for tax calculation.">
+            <field name="customer_type"/>
+            <div class="o_setting_right">
+                    <!-- <label for="customer_type"/> -->
+                        <!-- <div class="text-muted">Default customer type for tax calculation.</div> -->
+                    </div>
+          </setting>
+
+          <setting id="ceretax_seller_type" help="Default seller type for tax calculation.">
+            <field name="seller_type"/>
+            <div class="o_setting_right">
+                    <!-- <label for="customer_type"/> -->
+                        <!-- <div class="text-muted">Default seller type for tax calculation.</div> -->
+                    </div>
+          </setting>
+
+         <setting id="ceretax_ps_code" help="Default PS Code for items.">
+            <group>
+               <field name="ceretax_ps_code_id"
+               widget="many2one"
+               options="{'no_create_edit': True, 'no_create': True}"/>
+            </group>
+          </setting>
+
+          <setting id="ceretax_tax_included" help="Specify if tax is included in item prices.">
+            <field name="tax_included"/>
+          </setting>
+
+          <setting id="ceretax_about" help="https://www.ceretax.com/">
+            <field name="about_ceretax"/>
+          </setting>
+
+        </block>
+      </xpath>
+    </field>
+  </record>
+</odoo>

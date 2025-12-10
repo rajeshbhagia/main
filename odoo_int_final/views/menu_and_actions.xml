@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Root menu -->
+  <menuitem id="menu_ceretax_root" name="CereTax Integration" sequence="4"/>
+
+  <!-- Utilities submenu -->
+  <menuitem id="menu_ceretax_utilities" name="Utilities"
+            parent="menu_ceretax_root" sequence="10"/>
+
+  <!-- Transactions -->
+
+          
+
+  <!-- PS Codes Action -->
+  <record id="action_ceretax_ps_codes_act" model="ir.actions.act_window">
+      <field name="name">PS Codes  (Integration partner LnS Infusion)</field>
+      <field name="res_model">ceretax.ps.code</field>
+
+      <!-- IMPORTANT: Odoo 18 supported views -->
+      <field name="view_mode">list,form</field>
+  </record>
+
+  <menuitem id="menu_ceretax_ps_codes" 
+            name="PS Codes"
+            parent="menu_ceretax_utilities"
+            action="action_ceretax_ps_codes_act"
+            sequence="10"/>
+
+  <!-- Wizard -->
+  <record id="action_fetch" model="ir.actions.act_window">
+      <field name="name">Fetch PS Codes  (Integration partner LnS Infusion)</field>
+      <field name="res_model">ceretax.fetch.pscode.wizard</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+  </record>
+
+  <menuitem id="menu_ceretax_fetch_ps_codes" 
+            name="Fetch PS Codes"
+            parent="menu_ceretax_utilities"
+            action="action_fetch"
+            sequence="40"/>
+
+  <record id="action_ceretax_transaction" model="ir.actions.act_window">
+        <field name="name">CereTax Logs (Integration partner LnS Infusion)</field>
+        <field name="res_model">ceretax.transaction</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_ceretax_transaction_list"/>
+    </record>
+
+      <menuitem id="menu_odoo_int_transactions" name="Transactions"
+        parent="menu_ceretax_utilities" 
+         action="action_ceretax_transaction"
+        sequence="99"/>
+</odoo>
